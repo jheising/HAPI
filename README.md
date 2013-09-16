@@ -64,4 +64,20 @@ https://api.doh-main.com/get/donut/called/mmmmm_donut_01
 https://api.doh-main.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
 ```
 
+## Responses
 
+Responses to HAPI operations are meant to generally follow the structure of an english sentence so as to be easily understood by a lay-person.
+
+### General Rules
+
+1. A HAPI *must* return all important content to a request in the body of the HTTP response.
+2. A HAPI *may* return HTTP headers that set cookies, standard security parameters or other features that are generally understood by most common browsers.
+3. A HAPI *must* return content in JSON formatted text as a default response to any operation. Other formats may be supported as needed.
+
+### Errors
+
+```
+{ “this” : “failed”, “with_a” : [error_code], “because”: “[error_message]” } 
+```
+
+Where:
