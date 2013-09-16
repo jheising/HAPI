@@ -84,14 +84,6 @@ The response *must* adhere to the following form:
 { "this": "succeeded", "by": "[verb]", "the": "[resource_type]", "with": [data] }
 ```
 
-Examples:
-
-https://api.doh-main.com/create/donut/with/?filling=jelly
-
-```json
-{ "this": "succeeded", "by": "creating", "the": "donut", "with": { "id": "mmmmm_donut_01", "filling": "jelly" } }
-```
-
 Where:
 
 **[verb]**: A past-tense verb describing the operation of the request. The verb value should be composed of the same root word as the one in the request URL. Examples: *getting*, *creating*, *deleting*, *changing*, *opening*, *logging in*, etc.
@@ -100,7 +92,20 @@ Where:
 
 **[data]**: The JSON representation of an object or array containing the important content being returned from the HAPI. In the case of operations that generally do not return data (like DELETE), this might contain the unique ID of the resource being deleted. This spec does not concern the actual conventions used to represent this data (other than it being JSON), but generally it should keep within the spirit of this spec by remaining clear and easily understood by the lay-person.
 
+Examples:
 
+https://api.doh-main.com/create/donut/with/?filling=jelly
+```json
+{ "this": "succeeded", "by": "creating", "the": "donut", "with": { "id": "mmmmm_donut_01", "filling": "jelly" } }
+```
+
+https://api.doh-main.com/get/all/donuts
+```json
+{ "this": "succeeded", "by": "getting", "the": "donuts", "with": [
+  { "id": "mmmmm_donut_01", "filling": "jelly" },
+  { "id": "mmmmm_donut_02", "filling": "custard" }
+] }
+```
 
 ### Errors
 
