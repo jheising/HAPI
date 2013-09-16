@@ -7,6 +7,12 @@ HAPI attempts to accomplish this by trying to adhere to the following principles
 2. All inputs and outputs to a HAPI should generally be readable in a sentence form.
 3. A HAPI should be self-documenting and generally understandable by non-technical people.
 
+
+### Why?
+
+One might ask, why should an API be human readable? As development teams become smaller and more nimble, we must increasingly rely on real-world users in real-world scenarios to help us find, debug and fix code. 
+
+
 ## Requests
 
 ### General Rules
