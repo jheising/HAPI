@@ -76,8 +76,21 @@ Responses to HAPI operations are meant to generally follow the structure of an e
 
 ### Errors
 
+Errors will be returned as JSON formatted text with an HTTP response code that matches as close as possible to the type of error being returned.
+
 ```
-{ “this” : “failed”, “with_a” : [error_code], “because”: “[error_message]” } 
+{ "this": "failed", "with_a": [error_code], "because": "[error_message]" } 
 ```
 
 Where:
+
+**[error_code]**: A numerical error code for easy parsing by machines. This may or may not be different than the HTTP response code.
+
+**[error_message]**: A human readable error message.
+
+Example:
+
+```
+{ "this": "failed", "with_a": 5600, "because": "donuts with holes can't contain jelly" }
+```
+
