@@ -11,7 +11,7 @@ HAPI attempts to accomplish this by trying to adhere to the following principles
 
 One might ask, why should an API be human readable? Answer: it saves an immense amount of time.
 
-Imagine asking another developer or an end-user to help debug a traditional REST API call— the process will typically require some sort of specialized REST client software capable of setting HTTP verbs, headers and request bodies. The instructions to make a simple call might range from a few lines for a seasoned developer to a few pages for a lay-person. Add this inefficiency up for an entire project and it equals a whole lot of wasted time.
+Imagine asking another developer or an end-user to help debug a traditional REST API call— the process will typically require some sort of specialized REST client software capable of setting HTTP verbs, headers and request bodies. The instructions to make a simple call might range from a few lines for a seasoned developer to a few pages for a layperson. Add this inefficiency up for an entire project and it equals a whole lot of wasted time.
 
 HAPI solves this problem by reducing all operations to simple requests that can be initiated and read by any standard web browser. API calls are reduced from a series of instructions into a single, self-documenting URL that can be clicked from an Email, chat, blog post (or anything else) with results that are simple enough to be read back over the phone in plain english.
 
@@ -76,7 +76,7 @@ https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
 
 ## Responses
 
-Responses to HAPI operations are meant to generally follow the structure of an english sentence so as to be easily understood by a lay-person.
+Responses to HAPI operations are meant to generally follow the structure of an english sentence so as to be easily understood by a layperson.
 
 ### General Rules
 
@@ -100,7 +100,7 @@ Where:
 
 **[resource_type]**: The name of a type of resource, like *employee* or *post*. The HAPI *should* return the same singular or plural form of the resource type passed in the request.
 
-**[data]**: The JSON representation of an object or array containing the important content being returned from the HAPI. In the case of operations that generally do not return data (like DELETE), this might contain the unique ID of the resource being deleted. This spec does not concern the actual conventions used to represent this data (other than it being JSON), but generally it should keep within the spirit of this spec by remaining clear and easily understood by the lay-person.
+**[data]**: The JSON representation of an object or array containing the important content being returned from the HAPI. In the case of operations that generally do not return data (like DELETE), this might contain the unique ID of the resource being deleted. This spec does not concern the actual conventions used to represent this data (other than it being JSON), but generally it should keep within the spirit of this spec by remaining clear and easily understood by the layperson.
 
 Examples:
 
