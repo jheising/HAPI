@@ -74,9 +74,29 @@ Responses to HAPI operations are meant to generally follow the structure of an e
 2. A HAPI *may* return HTTP headers that set cookies, standard security parameters or other features that are generally understood by most common browsers.
 3. A HAPI *must* return content in JSON formatted text as a default response to any operation. Other formats may be supported as needed.
 
+### Results
+
+Results will be returned as JSON formatted text with an HTTP response code of type 200.
+
+The response *must* adhere to the following form:
+
+```
+{ "this": "succeeded", "by": "[verb]", "the": "[resource_type]", "with": [data] }
+```
+
+Where:
+
+**[verb]**: A past-tense verb describing the operation of the request. The verb value should be composed of the same root word as the one in the request URL. Examples: *getting*, *creating*, *deleting*, *changing*, *opening*, *logging in*, etc.
+
+**[resource_type]**: The name of a type of resource, like *employee* or *post*. The HAPI *should* return the same singular or plural form of the resource type passed in the request.
+
+**[data]**: The JSON representation of an object or array containing the important content being returned from the HAPI. In the case of operations that generally do not return data (like DELETE), this might contain the unique ID of the resource being deleted. This spec does not concern the actual conventions used to represent this data (other than it being JSON), but generally it should keep within the spirit of this spec by remaining clear and easily understood by the lay-person.
+
 ### Errors
 
 Errors will be returned as JSON formatted text with an HTTP response code that matches as close as possible to the type of error being returned.
+
+The response *must* adhere to the following form:
 
 ```
 { "this": "failed", "with_a": [error_code], "because": "[error_message]" } 
