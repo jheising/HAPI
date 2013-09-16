@@ -80,8 +80,16 @@ Results will be returned as JSON formatted text with an HTTP response code of ty
 
 The response *must* adhere to the following form:
 
-```
+```json
 { "this": "succeeded", "by": "[verb]", "the": "[resource_type]", "with": [data] }
+```
+
+Examples:
+
+https://api.doh-main.com/create/donut/with/?filling=jelly
+
+```json
+{ "this": "succeeded", "by": "creating", "the": "donut", "with": { "id": "mmmmm_donut_01", "filling": "jelly" } }
 ```
 
 Where:
@@ -92,13 +100,15 @@ Where:
 
 **[data]**: The JSON representation of an object or array containing the important content being returned from the HAPI. In the case of operations that generally do not return data (like DELETE), this might contain the unique ID of the resource being deleted. This spec does not concern the actual conventions used to represent this data (other than it being JSON), but generally it should keep within the spirit of this spec by remaining clear and easily understood by the lay-person.
 
+
+
 ### Errors
 
 Errors will be returned as JSON formatted text with an HTTP response code that matches as close as possible to the type of error being returned.
 
 The response *must* adhere to the following form:
 
-```
+```json
 { "this": "failed", "with_a": [error_code], "because": "[error_message]" } 
 ```
 
@@ -110,7 +120,7 @@ Where:
 
 Example:
 
-```
+```json
 { "this": "failed", "with_a": 5600, "because": "donuts with holes can't contain jelly" }
 ```
 
