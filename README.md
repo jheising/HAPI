@@ -9,9 +9,9 @@ HAPI attempts to accomplish this by trying to adhere to the following principles
 
 ### Why?
 
-One might ask, why should an API be human readable? Answer: it's quicker. Imagine asking another developer or an end-user to help debug a traditional REST API call— the instructions will typically require some sort of REST client capable of setting HTTP verbs, headers and request bodies. The instructions to make a simple call might range from a few lines for a seasoned developer to a few pages for a lay-person. Add this inefficiency up for an entire project and it equals a whole lot of wasted time.
+One might ask, why should an API be human readable? Answer: it's quicker. Imagine asking another developer or an end-user to help debug a traditional REST API call— the instructions will typically require some sort of specialized REST client software capable of setting HTTP verbs, headers and request bodies. The instructions to make a simple call might range from a few lines for a seasoned developer to a few pages for a lay-person. Add this inefficiency up for an entire project and it equals a whole lot of wasted time.
 
-HAPI solves this problem by reducing all operations to simple requests that can be initiated and read by any standard web browser. API calls are reduced from a series of instructions into a single URL that can be clicked from an Email, chat, blog post (or anything else) with results that are simple enough to be read back over the phone in plain english.
+HAPI solves this problem by reducing all operations to simple requests that can be initiated and read by any standard web browser. API calls are reduced from a series of instructions into a single, self-documenting URL that can be clicked from an Email, chat, blog post (or anything else) with results that are simple enough to be read back over the phone in plain english.
 
 ## Requests
 
@@ -68,6 +68,8 @@ https://api.doh-main.com/get/all/donuts/where/?filling=jelly
 https://api.doh-main.com/get/donut/called/mmmmm_donut_01
 
 https://api.doh-main.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
+
+https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
 ```
 
 ## Responses
@@ -111,6 +113,11 @@ https://api.doh-main.com/get/all/donuts
   { "id": "mmmmm_donut_01", "filling": "jelly" },
   { "id": "mmmmm_donut_02", "filling": "custard" }
 ] }
+```
+
+https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
+```json
+{ "this": "succeeded", "by": "deleting", "the": "donut", "with": { "id": "mmmmm_donut_01" } }
 ```
 
 ### Errors
