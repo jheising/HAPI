@@ -129,7 +129,7 @@ Errors will be returned as JSON formatted text with an HTTP response code that m
 The response *must* adhere to the following form:
 
 ```json
-{ "this": "failed", "with_a": [error_code], "because": "[error_message]" } 
+{ "this": "failed", "from_a": [error_code], "because": "[error_message]" } 
 ```
 
 Where:
@@ -141,6 +141,6 @@ Where:
 Example:
 
 ```json
-{ "this": "failed", "with_a": 5600, "because": "donuts with holes can't contain jelly" }
+{ "this": "failed", "from_a": 5600, "because": "donuts with holes can't contain jelly" }
 ```
 
