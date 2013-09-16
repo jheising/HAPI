@@ -1,4 +1,4 @@
-# HAPI - Humanized API
+# HAPI - The Humanized API
 
 The goal of HAPI is to define a standard for creating Web-based APIs that are machine ready but human/developer friendly.
 HAPI attempts to accomplish this by trying to adhere to the following principles:
