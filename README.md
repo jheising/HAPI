@@ -42,10 +42,26 @@ DELETE: `https://api.` **[domain]** `/ delete /` **[resource_type]** `/ called /
 
 Where:
 
-**domain**: The domain name of the HAPI. While HAPIs should generally not be segmented into separate parts, it is acceptable to prefix the domain with a sub-domain for purposes of staging, and testing environments such as: *api.staging.mydomain.com*.
+**[domain]**: The domain name of the HAPI. While HAPIs should generally not be segmented into separate parts, it is acceptable to prefix the domain with a sub-domain for purposes of staging, and testing environments such as: *api.staging.mydomain.com*.
 
-**resource_type**: The name of a type of resource, like *employee* or *post*. The HAPI *must* support and treat the singular and plural form of the resource type as equal. For example, *employee* and *employees* will both be valid and considered equal.
+**[resource_type]**: The name of a type of resource, like *employee* or *post*. The HAPI *must* support and treat the singular and plural form of the resource type as equal. For example, *employee* and *employees* will both be valid and considered equal.
 
-**resource_id**: The unique ID or name of a resource, like *2a89ef* or *fritz_734*.
+**[resource_id]**: The unique ID or name of a resource, like *2a89ef* or *fritz_734*.
 
-**parameters**: Any parameters required to complete the request in standard name/value pair format for HTTP query params.
+**[parameters]**: Any parameters required to complete the request in standard name/value pair format for HTTP query params.
+
+Examples:
+
+```
+https://api.doh-main.com/create/donut/with/?filling=jelly
+
+https://api.doh-main.com/get/all/donuts
+
+https://api.doh-main.com/get/all/donuts/where/?filling=jelly
+
+https://api.doh-main.com/get/donut/called/mmmmm_donut_01
+
+https://api.doh-main.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
+```
+
+
