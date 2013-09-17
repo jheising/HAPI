@@ -36,7 +36,7 @@ HAPI solves this problem by reducing all operations to simple requests that can 
 3. A HAPI *should* strive to keep all input parameters within the URL of the request and not require any content within the HTTP request body.
 4. For requests with content (e.g. files) that cannot be sent through a URL, the HAPI *must* render an HTML page with a form to submit the content.
 5. A HAPI *must* support non-secure HTTP requests, but *should* return an error message with the proper secure, HTTPS URL.
-6. A HAPI *can* support cookies for security and tracking purposes, but must provide an HTML form to generate and/or set the cookies.
+6. A HAPI *can* support cookies for security and tracking purposes, but must provide another HAPI call to generate and/or set the cookies.
 
 ### URLs
 
@@ -156,3 +156,16 @@ Example:
 { "this": "failed", "with": 5600, "because": "donuts with holes can't contain jelly" }
 ```
 
+## Security
+
+The HAPI spec does not define a process for handling security, but makes recommendations on how to implement security that is HAPI in nature. The following process is an example:
+
+1. Provide a HAPI operation to generate a session token with a URL like:
+```
+https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
+```
+2. The previous HAPI request would respond by setting a cookie named `session_token` to a generated session token and an HTTP body like:
+```json
+{ "this": "succeeded", "by": "creating", "a": "session", "with": { "session_token": "ed68368f5ff54a00a9891858013a317b" } }
+```
+3. All other HAPI operations should accept the `session_token` cookie for authentication purposes. HAPI operations should also accept an HTTP query parameter named `session_token` in lieu of the cookie if the client does not support cookies.
