@@ -7,6 +7,18 @@ HAPI attempts to accomplish this by trying to adhere to the following principles
 2. All inputs and outputs to a HAPI should generally be readable in a sentence form.
 3. A HAPI should be self-documenting and generally understandable by non-technical people.
 
+Here's an example of HAPIness:
+
+**A HAPI request**
+
+https://api.doh-main.com/create/donut/with/?filling=jelly
+
+**A HAPI response**
+
+```json
+{ "this": "succeeded", "by": "creating", "the": "donut", "with": { "id": "mmmmm_donut_01", "filling": "jelly" } }
+```
+
 ### Why?
 
 One might ask, why should an API be human readable? Answer: it saves an immense amount of time.
