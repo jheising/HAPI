@@ -9,12 +9,12 @@ HAPI attempts to accomplish this by trying to adhere to the following principles
 
 Here's an example of HAPIness:
 
-**A HAPI request**
-
+**A HAPI request URL**
+```
 https://api.doh-main.com/create/donut/with/?filling=jelly
+```
 
 **A HAPI response**
-
 ```json
 { "this": "succeeded", "by": "creating", "the": "donut", "with": { "id": "mmmmm_donut_01", "filling": "jelly" } }
 ```
