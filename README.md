@@ -65,7 +65,7 @@ https://api.doh-main.com/create/donut/with/?filling=jelly
 
 https://api.doh-main.com/get/all/donuts
 
-https://api.doh-main.com/get/all/donuts/where/?filling=jelly
+https://api.doh-main.com/get/all/donuts/with/?filling=jelly
 
 https://api.doh-main.com/get/donut/called/mmmmm_donut_01
 
