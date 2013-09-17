@@ -1,7 +1,7 @@
 # HAPI - The Humanized API
 
 The goal of HAPI is to define a standard for creating Web-based APIs that are machine ready but human/developer friendly.
-HAPI attempts to accomplish this by trying to adhere to the following principles:
+HAPI attempts to accomplish this by adhering to the following principles:
 
 1. A HAPI should be accessible through a URL with nothing more than a standard web browser.
 2. All inputs and outputs to a HAPI should generally be readable in a sentence form.
@@ -88,7 +88,7 @@ https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
 
 #### Other Operations
 
-Other operations are beyond the scope of this spec, but should generally follow the guidelines of all other requests in being human readable in a sentence form. For example:
+Other operations are beyond the scope of this spec, but should generally follow the guidelines of all other requests by being human readable in a sentence form. For example:
 
 ```
 https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
