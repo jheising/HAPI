@@ -165,7 +165,9 @@ The HAPI spec does not define a process for handling security, but makes recomme
 https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
 ```
 2. The previous HAPI request would respond by setting a cookie named `session_token` to a generated session token and an HTTP body like:
+
 ```json
 { "this": "succeeded", "by": "creating", "a": "session", "with": { "session_token": "ed68368f5ff54a00a9891858013a317b" } }
 ```
-3. All other HAPI operations should accept the `session_token` cookie for authentication purposes. HAPI operations should also accept an HTTP query parameter named `session_token` in lieu of the cookie if the client does not support cookies.
+
+All other HAPI operations should accept the `session_token` cookie for authentication purposes. HAPI operations should also accept an HTTP query parameter named `session_token` in lieu of the cookie if the client does not support cookies.
