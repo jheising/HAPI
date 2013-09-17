@@ -86,6 +86,14 @@ https://api.doh-main.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
 https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
 ```
 
+#### Other Operations
+
+Other operations are beyond the scope of this spec, but should generally follow the guidelines of all other requests in being human readable in a sentence form. For example:
+
+```
+https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
+```
+
 ## Responses
 
 Responses to HAPI operations are meant to generally follow the structure of an english sentence so as to be easily understood by a layperson.
