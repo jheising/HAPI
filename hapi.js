@@ -50,4 +50,4 @@ hapi.middleware = function (req, res, next) {
     return next();
 };
 
-module.exports.hapi = hapi;
+module.exports = hapi;
