@@ -1,0 +1,25 @@
+{
+  "name": "humanized-api",
+  "version": "0.0.1",
+  "description": "A spec and implementation for Humanized web APIs, aka HAPI. The goal of HAPI is to define a standard for creating Web-based APIs that are machine ready but human friendly.",
+  "main": "hapi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jheising/HAPI.git"
+  },
+  "keywords": [
+    "api",
+    "humanized",
+    "human",
+    "readable"
+  ],
+  "author": "Jim Heising <jheising@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jheising/HAPI/issues"
+  },
+  "homepage": "https://github.com/jheising/HAPI"
+}
