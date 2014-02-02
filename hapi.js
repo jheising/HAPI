@@ -30,24 +30,30 @@ hapi.makeHAPIFailure = function (why, httpErrorCode, apiErrorCode) {
     return hapiResponse;
 }
 
-hapi.middleware = function (req, res, next) {
+function middleware()
+{
+    function hapiMiddleware(req, res, next) {
+        res.sendHAPISuccess = function(HAPI_VERB, resourceType, data)
+        {
+            res.send(hapi.makeHAPISuccess(HAPI_VERB, resourceType, data));
+        }
 
-    res.sendHAPISuccess = function(HAPI_VERB, resourceType, data)
-    {
-        res.send(hapi.makeHAPISuccess(HAPI_VERB, resourceType, data));
+        res.sendHAPIFailure = function(why, httpErrorCode, apiErrorCode)
+        {
+            res.send(hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
+        }
+
+        res.sendHAPINotFound = function()
+        {
+            res.sendHAPIFailure("we couldn't find this", 404, 404);
+        }
+
+        return (next());
     }
 
-    res.sendHAPIFailure = function(why, httpErrorCode, apiErrorCode)
-    {
-        res.send(hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
-    }
+    return (hapiMiddleware);
+}
 
-    res.sendHAPINotFound = function()
-    {
-        res.sendHAPIFailure("we couldn't find this", 404, 404);
-    }
-
-    return next();
-};
+hapi.middleware = middleware;
 
 module.exports = hapi;
