@@ -1,11 +1,26 @@
 # HAPI - The Humanized API
 
 The goal of HAPI is to define a standard for creating Web-based APIs that are machine ready but human/developer friendly.
-HAPI attempts to accomplish this by trying to adhere to the following principles:
+HAPI attempts to accomplish this by adhering to the following principles:
 
 1. A HAPI should be accessible through a URL with nothing more than a standard web browser.
 2. All inputs and outputs to a HAPI should generally be readable in a sentence form.
 3. A HAPI should be self-documenting and generally understandable by non-technical people.
+
+Here's an example of HAPIness:
+
+**A HAPI request URL**
+```
+https://api.doh-main.com/create/donut/with/?filling=jelly
+```
+
+**A HAPI response**
+```json
+{ "this": "succeeded", "by": "creating", "the": "donut", "with": { 
+  "id": "mmmmm_donut_01", 
+  "filling": "jelly" 
+} }
+```
 
 ### Why?
 
@@ -24,7 +39,7 @@ HAPI solves this problem by reducing all operations to simple requests that can 
 3. A HAPI *should* strive to keep all input parameters within the URL of the request and not require any content within the HTTP request body.
 4. For requests with content (e.g. files) that cannot be sent through a URL, the HAPI *must* render an HTML page with a form to submit the content.
 5. A HAPI *must* support non-secure HTTP requests, but *should* return an error message with the proper secure, HTTPS URL.
-6. A HAPI *can* support cookies for security and tracking purposes, but must provide an HTML form to generate and/or set the cookies.
+6. A HAPI *can* support cookies for security and tracking purposes, but must provide another HAPI call to generate and/or set the cookies.
 
 ### URLs
 
@@ -72,6 +87,14 @@ https://api.doh-main.com/get/donut/called/mmmmm_donut_01
 https://api.doh-main.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
 
 https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
+```
+
+#### Other Operations
+
+Other operations are beyond the scope of this spec, but should generally follow the guidelines of all other requests by being human readable in a sentence form. For example:
+
+```
+https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
 ```
 
 ## Responses
@@ -144,3 +167,18 @@ Example:
 { "this": "failed", "with": 5600, "because": "donuts with holes can't contain jelly" }
 ```
 
+## Security
+
+The HAPI spec does not define a process for handling security, but makes recommendations on how to implement security that is HAPI in nature. The following process is an example:
+
+1. Provide a HAPI operation to generate a session token with a URL like:
+```
+https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
+```
+2. The previous HAPI request would respond by setting a cookie named `session_token` to a generated session token and an HTTP body like:
+
+```json
+{ "this": "succeeded", "by": "creating", "a": "session", "with": { "session_token": "ed68368f5ff54a00a9891858013a317b" } }
+```
+
+All other HAPI operations should accept the `session_token` cookie for authentication purposes. HAPI operations should also accept an HTTP query parameter named `session_token` in lieu of the cookie if the client does not support cookies.
