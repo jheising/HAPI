@@ -11,7 +11,7 @@ Here's an example of HAPIness:
 
 **A HAPI request URL**
 ```
-https://api.doh-main.com/create/donut/with/?filling=jelly
+https://api.dohmain.com/create/donut/with/?filling=jelly
 ```
 
 **A HAPI response**
@@ -46,7 +46,7 @@ URLs to access the operations on a HAPI are meant to generally follow the struct
 
 #### GET and CRUD Operations
 
-URLs for GET and CRUD (CReate, Update, Delete) operations *must* adhere to the following forms:
+URLs for CRUD (Create, Read, Update, Delete) operations *should* adhere to the following forms:
 
 (Note: spaces have been added for readability)
 
@@ -64,9 +64,9 @@ DELETE: `https://api.` **[domain]** `/ delete /` **[resource_type]** `/ called /
 
 Where:
 
-**[domain]**: The domain name of the HAPI. While HAPIs should generally not be segmented into separate parts, it is acceptable to prefix the domain with a sub-domain for purposes of staging, and testing environments such as: *api.staging.mydomain.com*.
+**[domain]**: The domain name of the HAPI. While HAPIs should generally not be segmented into separate sub-domains, it is acceptable to prefix the domain with a sub-domain for purposes of staging, and testing environments such as: *api.staging.mydomain.com*.
 
-**[resource_type]**: The name of a type of resource, like *employee* or *post*. The HAPI *must* support and treat the singular and plural form of the resource type as equal. For example, *employee* and *employees* will both be valid and considered equal.
+**[resource_type]**: The name of a type of resource, like *employee* or *post*. A HAPI *should* support and treat the singular and plural form of the resource type as equal. For example, *employee* and *employees* will both be valid and considered equal.
 
 **[resource_id]**: The unique ID or name of a resource, like *2a89ef* or *fritz_734*.
 
@@ -75,17 +75,17 @@ Where:
 Examples:
 
 ```
-https://api.doh-main.com/create/donut/with/?filling=jelly
+https://api.dohmain.com/create/donut/with/?filling=jelly
 
-https://api.doh-main.com/get/all/donuts
+https://api.dohmain.com/get/all/donuts
 
-https://api.doh-main.com/get/all/donuts/with/?filling=jelly
+https://api.dohmain.com/get/all/donuts/with/?filling=jelly
 
-https://api.doh-main.com/get/donut/called/mmmmm_donut_01
+https://api.dohmain.com/get/donut/called/mmmmm_donut_01
 
-https://api.doh-main.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
+https://api.dohmain.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
 
-https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
+https://api.dohmain.com/delete/donut/called/mmmmm_donut_01
 ```
 
 #### Other Operations
@@ -93,7 +93,7 @@ https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
 Other operations are beyond the scope of this spec, but should generally follow the guidelines of all other requests by being human readable in a sentence form. For example:
 
 ```
-https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
+https://api.dohmain.com/start/a/session/for/?username=homer&password=mrplow
 ```
 
 ## Responses
@@ -103,14 +103,14 @@ Responses to HAPI operations are meant to generally follow the structure of an e
 ### General Rules
 
 1. A HAPI *must* return all important content to a request in the body of the HTTP response.
-2. A HAPI *may* return HTTP headers that set cookies, standard security parameters or other features that are generally understood by most common browsers.
+2. A HAPI *may* return HTTP headers that set cookies for tracking purposes, but not for security purposes. Other headers are fine as long as they aren't required to understand or generally use the API.
 3. A HAPI *must* return content in JSON formatted text as a default response to any operation. Other formats may be supported as needed.
 
 ### Results
 
 Results will be returned as JSON formatted text with an HTTP response code of type 200.
 
-The response *must* adhere to the following form:
+The response *should* adhere to the following form:
 
 ```json
 { "this": "succeeded", "by": "[verb]", "the": "[resource_type]", "with": [data] }
@@ -126,12 +126,12 @@ Where:
 
 Examples:
 
-https://api.doh-main.com/create/donut/with/?filling=jelly
+https://api.dohmain.com/create/donut/with/?filling=jelly
 ```json
 { "this": "succeeded", "by": "creating", "the": "donut", "with": { "id": "mmmmm_donut_01", "filling": "jelly" } }
 ```
 
-https://api.doh-main.com/get/all/donuts
+https://api.dohmain.com/get/all/donuts
 ```json
 { "this": "succeeded", "by": "getting", "the": "donuts", "with": [
   { "id": "mmmmm_donut_01", "filling": "jelly" },
@@ -139,7 +139,7 @@ https://api.doh-main.com/get/all/donuts
 ] }
 ```
 
-https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
+https://api.dohmain.com/delete/donut/called/mmmmm_donut_01
 ```json
 { "this": "succeeded", "by": "deleting", "the": "donut", "with": { "id": "mmmmm_donut_01" } }
 ```
@@ -148,7 +148,7 @@ https://api.doh-main.com/delete/donut/called/mmmmm_donut_01
 
 Errors will be returned as JSON formatted text with an HTTP response code that matches as close as possible to the type of error being returned.
 
-The response *must* adhere to the following form:
+The response *should* adhere to the following form:
 
 ```json
 { "this": "failed", "with": [error_code], "because": "[error_message]" } 
@@ -172,12 +172,12 @@ The HAPI spec does not define a process for handling security, but makes recomme
 
 1. Provide a HAPI operation to generate a session token with a URL like:
 ```
-https://api.doh-main.com/start/a/session/for/?username=homer&password=mrplow
+https://api.dohmain.com/start/a/session/for/?username=homer&password=mrplow
 ```
-2. The previous HAPI request would respond by setting a cookie named `session_token` to a generated session token and an HTTP body like:
+2. The previous HAPI request would respond by returning an object with a session-token like:
 
 ```json
 { "this": "succeeded", "by": "creating", "a": "session", "with": { "session_token": "ed68368f5ff54a00a9891858013a317b" } }
 ```
 
-All other HAPI operations should accept the `session_token` cookie for authentication purposes. HAPI operations should also accept an HTTP query parameter named `session_token` in lieu of the cookie if the client does not support cookies.
+All other HAPI operations would accept the `session_token` parameter for authentication purposes.
