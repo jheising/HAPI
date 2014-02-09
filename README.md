@@ -35,7 +35,7 @@ HAPI solves this problem by reducing all operations to simple requests that can 
 ### General Rules
 
 1. A HAPI *must* support the HTTP GET verb on all operations. Any other verb may be supported as well.
-2. A HAPI *must* not require any HTTP headers above and beyond what a standard web browser will send.
+2. A HAPI *must not* require any HTTP headers above and beyond what a standard web browser will send.
 3. A HAPI *should* strive to keep all input parameters within the URL of the request and not require any content within the HTTP request body.
 4. For requests with content (e.g. files) that cannot be sent through a URL, the HAPI *should* render an HTML page with a form to submit the content.
 6. A HAPI *must not* leverage cookies for security authentication purposes, as this could lead to phishing attacks.
