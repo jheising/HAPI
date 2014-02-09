@@ -126,20 +126,25 @@ Where:
 
 Examples:
 
+```
 https://api.dohmain.com/create/donut/with/?filling=jelly
+```
 ```json
 { "this": "succeeded", "by": "creating", "the": "donut", "with": { "id": "mmmmm_donut_01", "filling": "jelly" } }
 ```
 
+```
 https://api.dohmain.com/get/all/donuts
+```
 ```json
 { "this": "succeeded", "by": "getting", "the": "donuts", "with": [
   { "id": "mmmmm_donut_01", "filling": "jelly" },
   { "id": "mmmmm_donut_02", "filling": "custard" }
 ] }
 ```
-
+```
 https://api.dohmain.com/delete/donut/called/mmmmm_donut_01
+```
 ```json
 { "this": "succeeded", "by": "deleting", "the": "donut", "with": { "id": "mmmmm_donut_01" } }
 ```
