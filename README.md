@@ -24,7 +24,7 @@ https://api.dohmain.com/create/donut/with/?filling=jelly
 
 ### Why?
 
-One might ask, why should an API be human readable? Answer: it saves an immense amount of time.
+One might ask, why should an API be humanized? Answer: it saves an immense amount of time.
 
 Imagine asking another developer or an end-user to help debug a traditional REST API call— the process will typically require some sort of specialized REST client software capable of setting HTTP verbs, headers and request bodies. The instructions to make a simple call might range from a few lines for a seasoned developer to a few pages for a layperson. Add this inefficiency up for an entire project and it equals a whole lot of wasted time.
 
