@@ -37,9 +37,8 @@ HAPI solves this problem by reducing all operations to simple requests that can 
 1. A HAPI *must* support the HTTP GET verb on all operations.
 2. A HAPI *must* not require any HTTP headers above and beyond what a standard web browser will send.
 3. A HAPI *should* strive to keep all input parameters within the URL of the request and not require any content within the HTTP request body.
-4. For requests with content (e.g. files) that cannot be sent through a URL, the HAPI *must* render an HTML page with a form to submit the content.
-5. A HAPI *must* support non-secure HTTP requests, but *should* return an error message with the proper secure, HTTPS URL.
-6. A HAPI *can* support cookies for security and tracking purposes, but must provide another HAPI call to generate and/or set the cookies.
+4. For requests with content (e.g. files) that cannot be sent through a URL, the HAPI *should* render an HTML page with a form to submit the content.
+6. A HAPI *must not* leverage cookies for security authentication purposes, as this could lead to phishing attacks.
 
 ### URLs
 
