@@ -44,23 +44,23 @@ HAPI solves this problem by reducing all operations to simple requests that can 
 
 URLs to access the operations on a HAPI are meant to generally follow the structure of an english sentence so as to be easily memorized and recalled without having to consult documentation.
 
-#### GET and CRUD Operations
+#### CRUD Operations
 
 URLs for CRUD (Create, Read, Update, Delete) operations *should* adhere to the following forms:
 
 (Note: spaces have been added for readability)
 
-GET (all): `https://api.` **[domain]** `/ get / all /` **[resource_type]**
+Read (all): `https://api.` **[domain]** `/ get / all /` **[resource_type]**
 
-GET (query): `https://api.` **[domain]** `/ get / all /` **[resource_type]** `/ where / ?` **[parameters]**
+Read (query): `https://api.` **[domain]** `/ get / all /` **[resource_type]** `/ where / ?` **[parameters]**
 
-GET (specific): `https://api.` **[domain]** `/ get /` **[resource_type]** `/ called /` **[resource_id]**
+Read (specific): `https://api.` **[domain]** `/ get /` **[resource_type]** `/ called /` **[resource_id]**
 
-CREATE: `https://api.` **[domain]** `/ create /` **[resource_type]** `/ with / ?` **[parameters]**
+Create: `https://api.` **[domain]** `/ create /` **[resource_type]** `/ with / ?` **[parameters]**
 
-UPDATE: `https://api.` **[domain]** `/ change /` **[resource_type]** `/ called /` **[resource_id]** `/ to / ?` **[parameters]**
+Update: `https://api.` **[domain]** `/ change /` **[resource_type]** `/ called /` **[resource_id]** `/ to / ?` **[parameters]**
 
-DELETE: `https://api.` **[domain]** `/ delete /` **[resource_type]** `/ called /` **[resource_id]**
+Delete: `https://api.` **[domain]** `/ delete /` **[resource_type]** `/ called /` **[resource_id]**
 
 Where:
 
