@@ -43,7 +43,7 @@ function middleware()
             res.send(hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
         }
 
-        res.sendHAPINotFound = function()
+        res.sendHAPINotFoundFailure = function()
         {
             res.sendHAPIFailure("we couldn't find this", 404, 404);
         }
