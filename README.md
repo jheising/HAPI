@@ -1,3 +1,5 @@
+Follow [@jimheising](https://twitter.com/jimheising) for updates to HAPI
+
 # HAPI - The Humanized API
 
 ![logo](https://raw.github.com/jheising/HAPI/master/Logo/HAPI-128.png)
