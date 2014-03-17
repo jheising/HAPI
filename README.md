@@ -1,4 +1,4 @@
-Follow [@jimheising](https://twitter.com/jimheising) for updates to HAPI
+Follow [@jimheising](https://twitter.com/jimheising) for updates and news related to HAPI
 
 # HAPI - The Humanized API
 
