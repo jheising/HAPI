@@ -179,14 +179,38 @@ Example:
 
 The HAPI spec does not define a process for handling security, but makes recommendations on how to implement security that is HAPI in nature. The following process is an example:
 
-1. Provide a HAPI operation to generate a session token with a URL like:
+Provide a HAPI operation to generate a session token with a URL like:
 ```
 https://api.dohmain.com/start/a/session/for/?username=homer&password=mrplow
 ```
-2. The previous HAPI request would respond by returning an object with a session-token like:
+
+If you have concerns with passing a username and password via a GET request, then it is entirely acceptable to utilize HTTP basic, digest or other forms of authentication that easily prompt a user for their credentials from a standard web browser.
+
+The previous HAPI request would respond by returning an object with a session-token like:
 
 ```json
 { "this": "succeeded", "by": "creating", "a": "session", "with": { "session_token": "ed68368f5ff54a00a9891858013a317b" } }
 ```
 
 All other HAPI operations would accept the `session_token` parameter for authentication purposes.
+
+#### Cookies
+
+It is important that you **DO NOT** use cookies to store security credentials. Because HAPIs only support the GET verb, if you were to utilize a cookie for authentication, a hacker could exploit this by encouraging a user to click on a link that could cause data to become deleted or updated without the user taking affirmative action to do so.
+
+#### Confirmation Methods
+Even if cookies are not used, because HAPI is so easy, it might still be possible to trick some users into unknowingly modifying or deleting data. One possible way to combat against this is to implement a confirmation response for methods that delete or modify data, such as:
+
+```json
+{ "this": "donut will be DELETED", "by": "visiting", "a": "url", "with": "https://api.dohmain.com/delete/donut/called/mmmmm_donut_01?confirm=soIU98sh17" }
+```
+
+In this case, the user is prompted to call another URL with a temporary token in order to confirm the action to delete or modify the data. While this might be considered an unnecessary step when the API is being called by a machine, remember, HAPI does preclude you from supporting the DELETE verb-- in this case a machine might directly call the API with a DELETE verb and not be required to go through this extra step.
+
+#### Crawlers and Pre-Fetching
+
+Since the GET verb must be supported on all API call, one concern that some bring up is the accidental deletion or modification of data by a crawler or a browser with pre-fetching. As long as the HAPI utilizes some form of valid authentication scheme, this should never become a problem in reality.
+
+No API (HAPI, REST or otherwise) should ever consider the HTTP request verb as a security feature and assume that crawlers will only send GET requests.
+
+While pre-fetching is still in the early stages of drafts, all currently known implementations require some form of positive activation by the developer, usually with an HTML tag which specifically states the pages which should be fetched. As long as the developer does not actively take steps to pre-fetch pages which might delete or modify data, this should not be an issue.
