@@ -209,7 +209,7 @@ In this case, the user is prompted to call another URL with a temporary token in
 
 #### Crawlers and Pre-Fetching
 
-Since the GET verb must be supported on all API calls, one concern that some bring up is the accidental deletion or modification of data by a crawler or a browser with pre-fetching. As long as the HAPI utilizes some form of valid authentication scheme, this should never become a problem in reality.
+Since the GET verb must be supported on all API calls, one concern that some bring up is the accidental deletion or modification of data by a crawler or a browser with pre-fetching. As long as the HAPI utilizes a proper authentication scheme, this should never become a problem in reality.
 
 No API (HAPI, REST or otherwise) should ever consider the HTTP request verb as a security feature and assume that crawlers will only send GET requests.
 
