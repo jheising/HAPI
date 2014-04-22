@@ -196,7 +196,7 @@ All other HAPI operations would accept the `session_token` parameter for authent
 
 #### Cookies
 
-It is important that you **DO NOT** use cookies to store security credentials. Because HAPIs only support the GET verb, if you were to utilize a cookie for authentication, a hacker could exploit this by encouraging a user to click on a link that could cause data to become deleted or updated without the user taking affirmative action to do so.
+It is important that you **DO NOT** use cookies to store security credentials. Because HAPIs must support the GET verb on all requests, if you were to utilize a cookie for authentication a hacker could exploit this by encouraging a user to click on a link that could cause data to become modified without the user taking affirmative action to do so.
 
 #### Confirmation Methods
 Because HAPI is meant to make things easy it might still be possible to trick some users into unknowingly modifying or deleting data even if cookies aren't used. One possible way to combat against this is to implement a confirmation response for methods that delete or modify data, such as:
