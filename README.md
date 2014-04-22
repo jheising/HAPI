@@ -122,7 +122,7 @@ The response *should* adhere to the following form:
 
 Where:
 
-**[verb]**: A "past-tense" form of the verb (technically a factitive gerund derived from the verb) describing the operation of the request. The verb value should be composed of the same root word as the one in the request URL. Examples: *getting*, *creating*, *deleting*, *changing*, *opening*, *logging in*, etc.
+**[verb]**: A "past-tense-like" form of the verb (technically a factitive gerund derived from the verb) describing the operation of the request. The value should be composed of the same root word as the one in the request URL. Examples: *getting*, *creating*, *deleting*, *changing*, *opening*, *logging in*, etc.
 
 **[resource_type]**: The name of a type of resource, like *employee* or *post*. The HAPI *should* return the same singular or plural form of the resource type passed in the request.
 
