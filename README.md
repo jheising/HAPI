@@ -184,7 +184,7 @@ Provide a HAPI operation to generate a session token with a URL like:
 https://api.dohmain.com/start/a/session/for/?username=homer&password=mrplow
 ```
 
-If you have concerns with passing a username and password via a GET request, then it is entirely acceptable to utilize HTTP basic, digest or other forms of authentication that easily prompt a user for their credentials from a standard web browser.
+If you have concerns with passing a username and password via a GET request, then it is entirely acceptable to utilize HTTP basic, digest or other forms of authentication in which a user is easily prompted for their credentials in a standard web browser.
 
 The previous HAPI request would respond by returning an object with a session-token like:
 
