@@ -205,7 +205,7 @@ Because HAPI is meant to make things easy it might still be possible to trick so
 { "this": "donut will be DELETED", "by": "visiting", "a": "url", "with": "https://api.dohmain.com/delete/donut/called/mmmmm_donut_01?confirm=soIU98sh17" }
 ```
 
-In this case, the user is prompted to call another URL with a temporary token in order to confirm the action to delete or modify the data. While this might be considered an unnecessary step when the API is being called by a machine, remember, HAPI does preclude you from supporting the DELETE verb-- in this case a machine might directly call the API with a DELETE verb and not be required to go through this extra step.
+In this case, the user is prompted to call another URL with a temporary token in order to confirm the action to delete or modify the data. While this might be considered an unnecessary step when the API is being called by a machine, remember, HAPI does not preclude you from supporting the DELETE verb-- in this case a machine might directly call the API with a DELETE verb and not be required to go through this extra step.
 
 #### Crawlers and Pre-Fetching
 
