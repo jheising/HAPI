@@ -4,7 +4,7 @@ Follow [@jimheising](https://twitter.com/jimheising) for updates and news relate
 
 ![logo](https://raw.github.com/jheising/HAPI/master/Logo/HAPI-128.png)
 
-The goal of HAPI is to define a standard for creating Web-based APIs that are machine ready but human/developer friendly.
+The goal of HAPI is to define a standard for creating Web-based APIs that are machine ready but human/developer friendly— a self-documenting API.
 HAPI attempts to accomplish this by adhering to the following principles:
 
 1. A HAPI should be accessible through a URL with nothing more than a standard web browser.
