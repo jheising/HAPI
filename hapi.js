@@ -40,7 +40,7 @@ function middleware()
 
         res.sendHAPIFailure = function(why, httpErrorCode, apiErrorCode)
         {
-            res.send(hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
+            res.send(httpErrorCode || apiErrorCode || 500, hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
         }
 
         res.sendHAPINotFoundFailure = function()
