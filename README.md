@@ -155,7 +155,7 @@ https://api.dohmain.com/delete/donut/called/mmmmm_donut_01
 
 ### Errors
 
-Errors will be returned as JSON formatted text with an HTTP response code that matches as close as possible to the type of error being returned.
+Errors will be returned as JSON formatted text with an HTTP response code of 200. We always return an HTTP response code of 200 because we want to leave it up to the client software to determine what to do with the error instead of leaving it to the networking subsystem.
 
 The response *should* adhere to the following form:
 
@@ -165,7 +165,7 @@ The response *should* adhere to the following form:
 
 Where:
 
-**[error_code]**: A numerical error code for easy parsing by machines. This may or may not be different than the HTTP response code.
+**[error_code]**: A numerical error code for easy parsing by machines.
 
 **[error_message]**: A human readable error message.
 
