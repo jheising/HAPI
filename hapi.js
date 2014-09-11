@@ -18,12 +18,10 @@ hapi.makeHAPISuccess = function (HAPI_VERB, resourceType, data) {
     return hapiResponse;
 }
 
-hapi.makeHAPIFailure = function (why, httpErrorCode, apiErrorCode) {
-    httpErrorCode = httpErrorCode || 500;
-
+hapi.makeHAPIFailure = function (why, apiErrorCode) {
     var hapiResponse = {
         "this": "failed",
-        "with": apiErrorCode || httpErrorCode,
+        "with": apiErrorCode,
         "because": why
     };
 
@@ -38,14 +36,14 @@ function middleware()
             res.send(hapi.makeHAPISuccess(HAPI_VERB, resourceType, data));
         }
 
-        res.sendHAPIFailure = function(why, httpErrorCode, apiErrorCode)
+        res.sendHAPIFailure = function(why, apiErrorCode)
         {
-            res.send(httpErrorCode || 200, hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
+            res.send(hapi.makeHAPIFailure(why, apiErrorCode));
         }
 
         res.sendHAPINotFoundFailure = function()
         {
-            res.sendHAPIFailure("we couldn't find this", 200, 404);
+            res.sendHAPIFailure("we couldn't find this", 404);
         }
 
         return (next());
