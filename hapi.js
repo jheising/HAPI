@@ -40,12 +40,12 @@ function middleware()
 
         res.sendHAPIFailure = function(why, httpErrorCode, apiErrorCode)
         {
-            res.send(httpErrorCode || apiErrorCode || 500, hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
+            res.send(httpErrorCode || 200, hapi.makeHAPIFailure(why, httpErrorCode, apiErrorCode));
         }
 
         res.sendHAPINotFoundFailure = function()
         {
-            res.sendHAPIFailure("we couldn't find this", 404, 404);
+            res.sendHAPIFailure("we couldn't find this", 200, 404);
         }
 
         return (next());
