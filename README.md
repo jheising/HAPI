@@ -30,6 +30,7 @@ https://api.dohmain.com/create/donut/with/?filling=jelly
 ### Why?
 
 Question: Why should an API be humanized?
+<br>
 Answer: Machines consume APIs, but **people** still write the software that run on those machines.
 
 Developers should write easily testable and self/well-documented code— shouldn't an API aspire to the same ideals?
