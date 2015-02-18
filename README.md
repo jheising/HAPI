@@ -28,11 +28,12 @@ https://api.dohmain.com/create/donut/with/?filling=jelly
 
 ### Why?
 
-One might ask, why should an API be humanized? Answer: it saves an immense amount of time.
+Question: Why should an API be humanized?
+Answer: Machines consume APIs, but **people** still write the software that run on those machines.
 
-Imagine asking another developer or end-user to help debug a traditional REST API call— the process will typically require some sort of specialized client software (like curl for example) capable of setting HTTP verbs, headers and request bodies. The instructions to make a simple call might range from a few lines for a seasoned developer to a few pages for a layperson. Add this inefficiency up for an entire project and it equals a whole lot of wasted time.
+Developers should write easily testable and self/well-documented code— shouldn't an API aspire to the same ideals?
 
-HAPI solves this problem by reducing all operations to simple requests that can be initiated and read by any standard web browser. API calls are reduced from a series of instructions into a single, self-documenting URL that can be clicked from an Email, chat, blog post (or anything else) with results that are simple enough to be read back over the phone in plain english.
+HAPI addresses this problem by reducing all operations to simple requests that can be initiated and read by any standard web browser. API calls are reduced from a series of instructions into a single, self-documenting URL that can be clicked from an Email, chat, blog post (or anything else) with results that are simple enough to be read back over the phone in plain english.
 
 ## Requests
 
