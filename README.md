@@ -31,21 +31,11 @@ https://api.dohmain.com/create/donut/with/?filling=jelly
 
 Question: Why should an API be humanized?
 <br>
-Answer: Machines consume APIs, but **people** still write the software that run on those machines.
+Answer: Machines consume APIs, but people still write the software that run on those machines.
 
 Developers should write easily testable and self/well-documented code— shouldn't an API aspire to the same ideals?
 
 HAPI addresses this problem by reducing all operations to simple requests that can be initiated and read by any standard web browser. API calls are reduced from a series of instructions into a single, self-documenting URL that can be clicked from an Email, chat, blog post (or anything else) with results that are simple enough to be read back over the phone in plain english.
-
-## Requests
-
-### General Rules
-
-1. A HAPI *must* support the HTTP GET verb on all operations. Any other verb may be supported as well.
-2. A HAPI *must not* require any HTTP headers above and beyond what a standard web browser will send.
-3. A HAPI *should* strive to keep all input parameters within the URL of the request and not require any content within the HTTP request body.
-4. For requests with content (e.g. files) that cannot be sent through a URL, the HAPI *should* render an HTML page with a form to submit the content.
-6. A HAPI *must not* leverage cookies for security authentication purposes, as this could lead to phishing attacks.
 
 ### URLs
 
@@ -53,7 +43,7 @@ URLs to access the operations on a HAPI are meant to generally follow the struct
 
 #### CRUD Operations
 
-URLs for CRUD (Create, Read, Update, Delete) operations *should* adhere to the following forms:
+URLs for CRUD (Create, Read, Update, Delete) operations might look like:
 
 (Note: spaces have been added for readability)
 
@@ -95,29 +85,11 @@ https://api.dohmain.com/change/donut/called/mmmmm_donut_01/to/?filling=custard
 https://api.dohmain.com/delete/donut/called/mmmmm_donut_01
 ```
 
-#### Other Operations
-
-Other operations are beyond the scope of this spec, but should generally follow the guidelines of all other requests by being human readable in a sentence form. For example:
-
-```
-https://api.dohmain.com/start/a/session/for/?username=homer&password=mrplow
-```
-
-## Responses
+## Success Responses
 
 Responses to HAPI operations are meant to generally follow the structure of an english sentence so as to be easily understood by a layperson.
 
-### General Rules
-
-1. A HAPI *must* return all important content to a request in the body of the HTTP response.
-2. A HAPI *may* return HTTP headers that set cookies for tracking purposes, but not for security purposes. Other headers are fine as long as they aren't required to understand or generally use the API.
-3. A HAPI *must* return content in JSON formatted text as a default response to any operation. Other formats may be supported as needed.
-
-### Results
-
-Results will be returned as JSON formatted text with an HTTP response code of type 200.
-
-The response *should* adhere to the following form:
+The success response *should* adhere to the following form:
 
 ```json
 { "this": "succeeded", "by": "[verb]", "the": "[resource_type]", "with": [data] }
@@ -159,9 +131,9 @@ https://api.dohmain.com/delete/donut/called/mmmmm_donut_01
 
 ### Errors
 
-Errors will be returned as JSON formatted text with an HTTP response code of 200. We always return an HTTP response code of 200 because we want to leave it up to the client software to determine what to do with the error instead of leaving it to the networking subsystem.
+Errors follow a similar form.
 
-The response *should* adhere to the following form:
+The error response *should* adhere to the following form:
 
 ```json
 { "this": "failed", "with": [error_code], "because": "[error_message]" } 
@@ -169,52 +141,12 @@ The response *should* adhere to the following form:
 
 Where:
 
-**[error_code]**: A numerical error code for easy parsing by machines.
+**[error_code]**: A machine readable error code (number or string) that might be used as an index for localized error messages.
 
-**[error_message]**: A human readable error message.
+**[error_message]**: A human readable error message in case the application does not provide a lookup mechanism for the `error_code`.
 
 Example:
 
 ```json
-{ "this": "failed", "with": 5600, "because": "donuts with holes can't contain jelly" }
+{ "this": "failed", "with": "InvalidParameter", "because": "donuts with holes can't contain jelly" }
 ```
-
-## Security
-
-The HAPI spec does not define a process for handling security, but makes recommendations on how to implement security that is HAPI in nature. The following process is an example:
-
-Provide a HAPI operation to generate a session token with a URL like:
-```
-https://api.dohmain.com/start/a/session/for/?username=homer&password=mrplow
-```
-
-If you have concerns with passing a username and password via a GET request, then it is entirely acceptable to utilize HTTP basic, digest or other forms of authentication in which a user is easily prompted for their credentials in a standard web browser.
-
-The previous HAPI request would respond by returning an object with a session-token like:
-
-```json
-{ "this": "succeeded", "by": "creating", "a": "session", "with": { "session_token": "ed68368f5ff54a00a9891858013a317b" } }
-```
-
-All other HAPI operations would accept the `session_token` parameter for authentication purposes.
-
-#### Cookies
-
-It is important that you **DO NOT** use cookies to store API security credentials. Because HAPIs must support the GET verb on all requests, if you were to utilize a cookie for authentication a hacker could exploit this by encouraging a user to click on a link that could cause data to become modified without the user taking affirmative action to do so.
-
-#### Confirmation Methods
-Because HAPI is meant to make things easy it might still be possible to trick some users into unknowingly modifying or deleting data even if cookies aren't used. One possible way to combat against this is to implement a confirmation response for methods that delete or modify data, such as:
-
-```json
-{ "this": "donut will be DELETED", "by": "visiting", "a": "url", "with": "https://api.dohmain.com/delete/donut/called/mmmmm_donut_01?confirm=soIU98sh17" }
-```
-
-In this case, the user is prompted to call another URL with a temporary token in order to confirm the action to delete or modify the data. While this might be considered an unnecessary step when the API is being called by a machine, remember, HAPI does not preclude you from supporting the DELETE verb-- in this case a machine might directly call the API with a DELETE verb and not be required to go through this extra step.
-
-#### Crawlers and Pre-Fetching
-
-Since the GET verb must be supported on all API calls, one concern that some bring up is the accidental deletion or modification of data by a crawler or a browser with pre-fetching. As long as the HAPI utilizes a proper authentication scheme, this should never become a problem in reality.
-
-No API (HAPI, REST or otherwise) should ever consider the HTTP request verb as a security feature and assume that crawlers will only send GET requests.
-
-While pre-fetching is still in the early stages of drafts, all currently known implementations require some form of positive activation by the developer, usually with an HTML tag which specifically states the pages which should be fetched. As long as the developer does not actively take steps to pre-fetch pages which might delete or modify data, this should not be an issue.
