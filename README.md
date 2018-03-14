@@ -136,7 +136,7 @@ Errors follow a similar form.
 The error response *should* adhere to the following form:
 
 ```json
-{ "this": "failed", "with": [error_code], "because": "[error_message]" } 
+{ "this": "failed", "with": "[error_code]", "because": "[error_message]" } 
 ```
 
 Where:
